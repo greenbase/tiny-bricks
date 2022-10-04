@@ -12,7 +12,7 @@ class Model:
     Predefines necessary setters and getters and defines necessary interfaces for model import, prediction and visualization.
     """
     
-    def __init__(self, model, meta={'name': '', 'description': '', 'data': {'example': {'min': 0, 'max': 1, 'fallback': .5}}}):
+    def __init__(self, meta={'name': '', 'description': '', 'data': {'example': {'min': 0, 'max': 1, 'fallback': .5}}}):
         """
         Initialize Model Object.
 
@@ -103,7 +103,7 @@ class Model:
             dict: requested Meta-Information.
 
         """
-        if fields is not None:
+        if fields is None:
             fields = list(self.meta.keys())
      
         return {k: self.meta[k] for k in fields}
@@ -121,6 +121,8 @@ class Model:
             None.
 
         """
-        data = {k:data[k] if k in data else self.meta['data'][k]['fallback'] for k in self.meta['data']}
-        prediction = self.predict(data)
+        if data is None:
+            data = []
+        dummy = {k:data[k] if k in data else self.meta['data'][k]['fallback'] for k in self.meta['data']}
+        prediction = self.predict(dummy)
         return prediction
