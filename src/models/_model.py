@@ -121,5 +121,5 @@ class Model:
         if data is None:
             data = []
         dummy = {k:data[k] if k in data else self.meta['data'][k]['fallback'] for k in self.meta['data']}
-        prediction = self.predict(dummy)
+        prediction = self._predict(dummy)
         return prediction
