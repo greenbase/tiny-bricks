@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep  1 09:39:20 2022.
 
-@author: brede
-"""
 
 class Model:
     """Parent class for easily wrapping models generated in projects in class, API and Dashboard structure.
@@ -12,7 +8,7 @@ class Model:
     Predefines necessary setters and getters and defines necessary interfaces for model import, prediction and visualization.
     """
     
-    def __init__(self, meta={'name': '', 'description': '', 'data': {'example': {'min': 0, 'max': 1, 'fallback': .5}}}):
+    def __init__(self):
         """
         Initialize Model Object.
 
@@ -23,10 +19,10 @@ class Model:
             None.
 
         """
-        self.meta = meta
-        self.model = self.import_model()
+        self.meta = {'name': '', 'description': '', 'data': {'example': {'min': 0, 'max': 1, 'fallback': .5}}}
+        self._model = self._import_model()
         
-    def import_model(self):
+    def _import_model(self):
         """
         Create Placeholder for trained model pre-loading.
         
@@ -38,7 +34,7 @@ class Model:
         """
         return None
     
-    def predict(self, data):
+    def _predict(self, data):
         """
         Create Placeholder for prediction.
 
@@ -51,7 +47,7 @@ class Model:
         """
         return None
     
-    def visualize(self, data):
+    def _visualize(self, data):
         """
         Create Placeholder for vizualisation.
 
@@ -90,7 +86,8 @@ class Model:
         """
         pred = self.prep_and_predict(data)
         data['pred'] = pred
-        return data
+        image = self._visualize(data)
+        return image
         
     def get_meta_information(self, fields = None):
         """
