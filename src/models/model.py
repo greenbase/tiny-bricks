@@ -17,7 +17,10 @@ class Model(ABC):
         Initialize Model Object.
         """
         self._meta = {'name': '', 'description': '',
-                      'data': {'example': {'min': 0, 'max': 1, 'fallback': .5}}}
+                      'inp_features': ['inp_example'],
+                      'out_features': ['out_example'],
+                      'data': {'inp_example': {'min': 0, 'max': 1, 'fallback': .5},
+                               'out_example': {'min': 0, 'max': 1, 'fallback': .5}}}
         self._model = self._import_model()
 
     @abstractmethod
@@ -40,11 +43,12 @@ class Model(ABC):
         """
         pass
 
-    def _import_model(self):
+    def _import_model(self, model_path=None):
         """
         Create Placeholder for trained model pre-loading.
 
-        Needs to be implemented per model.
+        Args:
+            model_path (Path, optional): Path to load model from. Defaults to None.
 
         Returns:
             None.
@@ -71,10 +75,10 @@ class Model(ABC):
                 fallback values. Defaults to None.
 
         Returns:
-            Visualization of targets/predictions.
+            Path: Path to image file.
         """
-        pred = self.prep_and_predict(data)
-        data['pred'] = pred
+        predictions = self.prep_and_predict(data)
+        data['predictions'] = predictions
         image = self._visualize(data)
         return image
 
@@ -111,11 +115,10 @@ class Model(ABC):
             data = {}
 
         inp_data = {}
-        for feature in self._meta['data']:
+        for feature in self._meta['inp_features']:
             if feature not in data:
                 inp_data[feature] = self._meta['data'][feature]['fallback']
             else:
                 inp_data[feature] = data[feature]
 
-        prediction = self._predict(inp_data)
-        return prediction
+        return self._predict(inp_data)
