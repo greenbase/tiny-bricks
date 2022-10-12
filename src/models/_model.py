@@ -11,10 +11,7 @@ class Model:
     def __init__(self):
         """
         Initialize Model Object.
-
-        Args:
-            meta (dict, optional): Model information. Includes model name, description and viable range of data. Defaults to {'name': '', 'description': '', 'data': {}}.
-
+        
         Returns:
             None.
 
