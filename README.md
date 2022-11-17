@@ -1,7 +1,5 @@
-kihub_projektvorlage
+Lego Classification Model using Tensorflow
 ==============================
-
-Vorlage für Machbarkeitsstudien.
 
 Project Organization
 ------------
