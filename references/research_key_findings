@@ -1,0 +1,9 @@
+peng2015learning
+Für CNNs spielen Farbe, Textur und Hintergrund keine entscheidene Rolle für die Klassifikation der Objekte.
+Eine hohe Varianz an Objekten einer Klasse zu haben und von jedem Objekt mehrere Ansichten wirkt sich positiv auf die Performance aus.
+
+tahur2020current
+Im Paper von Nishad Tahur steht "nur" wie moderne CNN bei der Multi-Label-Klassfikation von Legosteinen performen.
+
+shen2022survey
+In dem Paper von Xiaoke Shen steht leider nicht viel Neues. (Zumindest nicht in Kapitel 2.1 und 2.2)
