@@ -1,4 +1,4 @@
-Lego Classification Model using Tensorflow
+LEGO Classification Model using Tensorflow
 ==============================
 
 Project Organization
