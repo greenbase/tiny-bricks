@@ -1,0 +1,1 @@
+# eine Klasse ist definiert mit der neue Model erzeugt werden können
