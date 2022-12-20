@@ -63,7 +63,7 @@ def build_model(hyperparameters:keras_tuner.HyperParameters):
     for layer_index in range(dense_layers_total):
         units = hyperparameters.Int(f"units_{layer_index}", units_count_min, units_count_max, units_count_step)
         model.add(tf.keras.layers.Dense(units, activation="relu"))
-        if hp.Boolean(f"dropout_{layer_index}"):
+        if hyperparameters.Boolean(f"dropout_{layer_index}"):
             model.add(tf.keras.layers.Dropout(rate=0.25))
 
     # add final layer
