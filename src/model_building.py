@@ -14,23 +14,23 @@ def build_model(hyperparameters:keras_tuner.HyperParameters):
 
     # define search space
     convolution_layers_total_min = 2
-    convolution_layers_total_max = 10
+    convolution_layers_total_max = 2
     convolution_layers_total_step = 1
 
     filter_count_min = 8
-    filter_count_max = 128
+    filter_count_max = 8
     filter_count_step = 8
 
     kernel_size_min = 2  # with value x the kernel size becomes (x, x)
-    kernel_size_max = 5
+    kernel_size_max = 2
     kernel_size_step = 1
 
     dense_layers_total_min = 1
-    dense_layers_total_max = 10
+    dense_layers_total_max = 1
     dense_layers_total_step = 1
 
     units_count_min = 8
-    units_count_max = 128
+    units_count_max = 8
     units_count_step = 8
 
     model = tf.keras.Sequential()
